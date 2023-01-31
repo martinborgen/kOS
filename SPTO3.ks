@@ -1,4 +1,4 @@
-//Space Plane Take-off script, supports only all-rapier spaceplanes, with no other jet or vacuum engines!
+//Space Plane Take-off script
 CLEARSCREEN.
 declare parameter input_orbit is "none".
 if input_orbit = "none" {
