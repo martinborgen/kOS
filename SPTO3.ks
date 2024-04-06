@@ -39,7 +39,6 @@ set sas to false.
 set mythrot to 0.
 set vPitch to pitch_of_vector(ship:facing:forevector).
 set vhead to heading_of_vector(ship:facing:forevector). 
-set throttle to 0.
 set atrunwayheading to heading_of_vector(ship:facing:forevector).
 
 set rapiermode to 0.
@@ -85,7 +84,7 @@ if abs(atrunwayheading - 90) > 0.5 {
 		print "adjusting heading".
 		if shipHead - 90 > 0 {
 			until shipHead - 90 < 0.2 {
-				lock vhead to 90.
+				set vhead to 90.
 				lock wheelsteering to 90.
 				set mythrot to 0.7 - ship:groundspeed / 10. 
 				set brakes to false. 
@@ -93,7 +92,7 @@ if abs(atrunwayheading - 90) > 0.5 {
 			}
 		} else if shipHead - 90 < 0 {
 			until shipHead - 90 > (-0.2) {
-				lock vhead to 90.
+				set vhead to 90.
 				lock wheelsteering to 90.
 				set mythrot to 0.7 - ship:groundspeed / 10. 
 				set brakes to false. 
@@ -244,8 +243,6 @@ until eta:apoapsis < burntime/2 + 10 {
 	print "Time to burn: " at(0,5). print round(eta:apoapsis - burntime/2) + " s" at(22,5).
 	wait 0.5.
 }
-set orbit_vel to sqrt(body:mu/(ship:apoapsis + body:radius)).
-set dVreq to orbit_vel - velocityat(ship, time+eta:apoapsis):orbit:mag.
 set burntime to (ship:mass * Ev ) / ship:availablethrust * (1 - constant:e^(-(dVreq / Ev))). 
 if kuniverse:TimeWarp:rate > 1 {
 	kuniverse:timewarp:cancelwarp.
