@@ -4,7 +4,7 @@ declare parameter desried_hdg is "none".
 declare parameter desired_alt is "none".
 declare parameter desired_vel is "none".
 
-runOncePath("old/lib_navball.ks").
+runOncePath("lib/lib_navball.ks").
 
 clearscreen.
 sas off.
